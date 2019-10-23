@@ -3,6 +3,7 @@ bin/
 build/
 .gradle/
 lib/
+libAxis2/
 BanjikoService.iml
 gradlew
 gradlew.bat

@@ -1,10 +1,8 @@
 package service.com.banjiko.creditos;
 
-import com.banjiko.creditos.BanjikoServiceSkeleton;
-import com.banjiko.creditos.TablaRequestDocument;
+import com.banjiko.creditos.*;
 import com.banjiko.creditos.TablaRequestDocument.TablaRequest;
-import com.banjiko.creditos.TablaResponseDocument;
-import org.fintech.data.Credito;
+import com.banjiko.creditos.TablaResponseDocument.TablaResponse;
 
 public class BanjikoServiceImpl extends BanjikoServiceSkeleton
 {
@@ -20,32 +18,38 @@ public class BanjikoServiceImpl extends BanjikoServiceSkeleton
         float tasaInteres = credito.getInteres();
         double saldo = credito.getMonto();
 
-        double capital;
+        double capital = saldo / meses;;
         double interes;
-        double iva;
         double total;
 
-        System.out.println("Haciendo tabla de amortizacion");
+        System.out.println("Generando tabla de amortizacion");
+        TablaResponseDocument responseDocument = TablaResponseDocument.Factory.newInstance();
+        TablaResponse response = responseDocument.addNewTablaResponse();
+        Table table = response.addNewTabla();
+
         for(int mes = 0; mes < meses; mes++)
         {
-            capital = saldo / meses;
             interes = saldo * tasaInteres;
-            iva = interes * 0.16;
-            total = capital + capital + interes + iva;
+            total = capital + interes;
             saldo -= capital;
             //TODO: Guardar valores en la db
-            //TODO: Asignar al response
-            print(capital, interes, iva, total);
+            table.addNoAmortizacion(mes);
+            table.addCapital(capital);
+            table.addInteres(interes);
+            table.addTotal(total);
+            table.addSaldo(saldo);
+
+            print(capital, interes, total);
         }
-        System.out.println("Retachando el error");
-        return super.banjikoOperation(tablaRequest);
+        System.out.println("Respondiendo con la tabla generada");
+
+        return responseDocument;
     }
 
-    private void print(double capital, double interes, double iva, double total)
+    private void print(double capital, double interes, double total)
     {
         System.out.println("Capital: " + capital);
         System.out.println("Interes: " + interes);
-        System.out.println("IVA: " + iva);
         System.out.println("Total: " + total);
         System.out.println("----------------------\n");
     }

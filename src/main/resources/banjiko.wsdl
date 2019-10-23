@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xmlns:tns="http://banjiko.com/creditos"
-                  xmlns:dt="http://fintech.org/data"
                   targetNamespace="http://banjiko.com/creditos">
     <wsdl:types>
-        <xs:schema targetNamespace="http://fintech.org/data" elementFormDefault="qualified">
-            <xs:include schemaLocation="data.xsd"/>
-        </xs:schema>
-
         <xs:schema targetNamespace="http://banjiko.com/creditos" elementFormDefault="qualified">
+
             <xs:element name="tablaRequest">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="ack" type="dt:acknowledge"/>
-                        <xs:element name="prestamo" type="dt:credito"/>
+                        <xs:element name="ack" type="tns:acknowledge"/>
+                        <xs:element name="prestamo" type="tns:credito"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -21,11 +17,47 @@
             <xs:element name="tablaResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="ack" type="dt:acknowledge"/>
-                        <xs:element name="tabla" type="dt:table"/>
+                        <xs:element name="ack" type="tns:acknowledge"/>
+                        <xs:element name="tabla" type="tns:table"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
+            <xs:complexType name="credito">
+                <xs:sequence>
+                    <xs:element name="cuenta" type="tns:cuenta"/>
+                    <xs:element name="monto" type="xs:double"/>
+                    <xs:element name="interes" type="xs:float"/>
+                    <xs:element name="plazo_meses" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="table">
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="no_amortizacion" type="xs:int"/>
+                    <xs:element name="fecha_limite_pago" type="xs:date"/>
+                    <xs:element name="capital" type="xs:double"/>
+                    <xs:element name="interes" type="xs:double"/>
+                    <xs:element name="total" type="xs:double"/>
+                    <xs:element name="saldo" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="acknowledge">
+                <xs:sequence>
+                    <xs:element name="code" type="xs:int"/>
+                    <xs:element name="message" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="cuenta">
+                <xs:sequence>
+                    <xs:element name="no_cuenta" type="xs:long"/>
+                    <xs:element name="limite" type="xs:double"/>
+                    <xs:element name="vencimiento" type="xs:date"/>
+                </xs:sequence>
+            </xs:complexType>
 
         </xs:schema>
     </wsdl:types>

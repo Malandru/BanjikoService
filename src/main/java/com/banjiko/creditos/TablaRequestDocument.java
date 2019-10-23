@@ -17,7 +17,7 @@ package com.banjiko.creditos;
 public interface TablaRequestDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(TablaRequestDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s87106C2180DB4A0A02CA64FD9386BFB6").resolveHandle("tablarequest2e97doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(TablaRequestDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s5C152683714F7B99C44842EF24EA444A").resolveHandle("tablarequest2e97doctype");
     
     /**
      * Gets the "tablaRequest" element
@@ -42,37 +42,37 @@ public interface TablaRequestDocument extends org.apache.xmlbeans.XmlObject
     public interface TablaRequest extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(TablaRequest.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s87106C2180DB4A0A02CA64FD9386BFB6").resolveHandle("tablarequestdbf6elemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(TablaRequest.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s5C152683714F7B99C44842EF24EA444A").resolveHandle("tablarequestdbf6elemtype");
         
         /**
          * Gets the "ack" element
          */
-        org.fintech.data.Acknowledge getAck();
+        com.banjiko.creditos.Acknowledge getAck();
         
         /**
          * Sets the "ack" element
          */
-        void setAck(org.fintech.data.Acknowledge ack);
+        void setAck(com.banjiko.creditos.Acknowledge ack);
         
         /**
          * Appends and returns a new empty "ack" element
          */
-        org.fintech.data.Acknowledge addNewAck();
+        com.banjiko.creditos.Acknowledge addNewAck();
         
         /**
          * Gets the "prestamo" element
          */
-        org.fintech.data.Credito getPrestamo();
+        com.banjiko.creditos.Credito getPrestamo();
         
         /**
          * Sets the "prestamo" element
          */
-        void setPrestamo(org.fintech.data.Credito prestamo);
+        void setPrestamo(com.banjiko.creditos.Credito prestamo);
         
         /**
          * Appends and returns a new empty "prestamo" element
          */
-        org.fintech.data.Credito addNewPrestamo();
+        com.banjiko.creditos.Credito addNewPrestamo();
         
         /**
          * A factory class with static methods for creating instances

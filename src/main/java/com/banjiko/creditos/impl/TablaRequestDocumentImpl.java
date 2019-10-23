@@ -95,13 +95,13 @@ public class TablaRequestDocumentImpl extends org.apache.xmlbeans.impl.values.Xm
         /**
          * Gets the "ack" element
          */
-        public org.fintech.data.Acknowledge getAck()
+        public com.banjiko.creditos.Acknowledge getAck()
         {
             synchronized (monitor())
             {
                 check_orphaned();
-                org.fintech.data.Acknowledge target = null;
-                target = (org.fintech.data.Acknowledge)get_store().find_element_user(ACK$0, 0);
+                com.banjiko.creditos.Acknowledge target = null;
+                target = (com.banjiko.creditos.Acknowledge)get_store().find_element_user(ACK$0, 0);
                 if (target == null)
                 {
                     return null;
@@ -113,16 +113,16 @@ public class TablaRequestDocumentImpl extends org.apache.xmlbeans.impl.values.Xm
         /**
          * Sets the "ack" element
          */
-        public void setAck(org.fintech.data.Acknowledge ack)
+        public void setAck(com.banjiko.creditos.Acknowledge ack)
         {
             synchronized (monitor())
             {
                 check_orphaned();
-                org.fintech.data.Acknowledge target = null;
-                target = (org.fintech.data.Acknowledge)get_store().find_element_user(ACK$0, 0);
+                com.banjiko.creditos.Acknowledge target = null;
+                target = (com.banjiko.creditos.Acknowledge)get_store().find_element_user(ACK$0, 0);
                 if (target == null)
                 {
-                    target = (org.fintech.data.Acknowledge)get_store().add_element_user(ACK$0);
+                    target = (com.banjiko.creditos.Acknowledge)get_store().add_element_user(ACK$0);
                 }
                 target.set(ack);
             }
@@ -131,13 +131,13 @@ public class TablaRequestDocumentImpl extends org.apache.xmlbeans.impl.values.Xm
         /**
          * Appends and returns a new empty "ack" element
          */
-        public org.fintech.data.Acknowledge addNewAck()
+        public com.banjiko.creditos.Acknowledge addNewAck()
         {
             synchronized (monitor())
             {
                 check_orphaned();
-                org.fintech.data.Acknowledge target = null;
-                target = (org.fintech.data.Acknowledge)get_store().add_element_user(ACK$0);
+                com.banjiko.creditos.Acknowledge target = null;
+                target = (com.banjiko.creditos.Acknowledge)get_store().add_element_user(ACK$0);
                 return target;
             }
         }
@@ -145,13 +145,13 @@ public class TablaRequestDocumentImpl extends org.apache.xmlbeans.impl.values.Xm
         /**
          * Gets the "prestamo" element
          */
-        public org.fintech.data.Credito getPrestamo()
+        public com.banjiko.creditos.Credito getPrestamo()
         {
             synchronized (monitor())
             {
                 check_orphaned();
-                org.fintech.data.Credito target = null;
-                target = (org.fintech.data.Credito)get_store().find_element_user(PRESTAMO$2, 0);
+                com.banjiko.creditos.Credito target = null;
+                target = (com.banjiko.creditos.Credito)get_store().find_element_user(PRESTAMO$2, 0);
                 if (target == null)
                 {
                     return null;
@@ -163,16 +163,16 @@ public class TablaRequestDocumentImpl extends org.apache.xmlbeans.impl.values.Xm
         /**
          * Sets the "prestamo" element
          */
-        public void setPrestamo(org.fintech.data.Credito prestamo)
+        public void setPrestamo(com.banjiko.creditos.Credito prestamo)
         {
             synchronized (monitor())
             {
                 check_orphaned();
-                org.fintech.data.Credito target = null;
-                target = (org.fintech.data.Credito)get_store().find_element_user(PRESTAMO$2, 0);
+                com.banjiko.creditos.Credito target = null;
+                target = (com.banjiko.creditos.Credito)get_store().find_element_user(PRESTAMO$2, 0);
                 if (target == null)
                 {
-                    target = (org.fintech.data.Credito)get_store().add_element_user(PRESTAMO$2);
+                    target = (com.banjiko.creditos.Credito)get_store().add_element_user(PRESTAMO$2);
                 }
                 target.set(prestamo);
             }
@@ -181,13 +181,13 @@ public class TablaRequestDocumentImpl extends org.apache.xmlbeans.impl.values.Xm
         /**
          * Appends and returns a new empty "prestamo" element
          */
-        public org.fintech.data.Credito addNewPrestamo()
+        public com.banjiko.creditos.Credito addNewPrestamo()
         {
             synchronized (monitor())
             {
                 check_orphaned();
-                org.fintech.data.Credito target = null;
-                target = (org.fintech.data.Credito)get_store().add_element_user(PRESTAMO$2);
+                com.banjiko.creditos.Credito target = null;
+                target = (com.banjiko.creditos.Credito)get_store().add_element_user(PRESTAMO$2);
                 return target;
             }
         }
