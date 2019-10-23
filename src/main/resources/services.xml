@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) -->
+<serviceGroup>
+    <service name="BanjikoService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.banjiko.creditos.BanjikoServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">service.com.banjiko.creditos.BanjikoServiceImpl</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="BanjikoOperation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://banjiko.com/creditos">
+            <actionMapping>http://banjiko.com/creditos/BanjikoOperation</actionMapping>
+            <outputActionMapping>http://banjiko.com/creditos/NewPortType/BanjikoOperationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

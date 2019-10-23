@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:tns="http://banjiko.com/creditos"
+                  xmlns:dt="http://fintech.org/data"
+                  targetNamespace="http://banjiko.com/creditos">
+    <wsdl:types>
+        <xs:schema targetNamespace="http://fintech.org/data" elementFormDefault="qualified">
+            <xs:include schemaLocation="data.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://banjiko.com/creditos" elementFormDefault="qualified">
+            <xs:element name="tablaRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ack" type="dt:acknowledge"/>
+                        <xs:element name="prestamo" type="dt:credito"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="tablaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ack" type="dt:acknowledge"/>
+                        <xs:element name="tabla" type="dt:table"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="BanjikoMessageRequest">
+        <wsdl:part name="parameter" element="tns:tablaRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="BanjikoMessageResponse">
+        <wsdl:part name="parameter" element="tns:tablaResponse" />
+    </wsdl:message>
+
+    <wsdl:portType name="NewPortType">
+        <wsdl:operation name="BanjikoOperation">
+            <wsdl:input message="tns:BanjikoMessageRequest" />
+            <wsdl:output message="tns:BanjikoMessageResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="BanjikoBinding" type="tns:NewPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="BanjikoOperation">
+            <soap:operation soapAction="http://banjiko.com/creditos/BanjikoOperation" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="BanjikoService">
+        <wsdl:port name="NewPort" binding="tns:BanjikoBinding">
+            <soap:address location="http://localhost:8080/axis2/services/BanjikoService" />
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
