@@ -11,7 +11,7 @@ def AXIS2_VERSION = '1.6.2'
 
 dependencies {
     compile "org.apache.axis2:axis2-adb:${AXIS2_VERSION}",
-            "org.apache.axis2:axis2-xmlbeans:1.6.2",
+            "org.apache.axis2:axis2-xmlbeans:${AXIS2_VERSION}",
             "org.apache.axis2:axis2-spring:${AXIS2_VERSION}",
             "org.apache.axis2:axis2-kernel:${AXIS2_VERSION}",
             "org.apache.axis2:axis2-transport-local:${AXIS2_VERSION}",

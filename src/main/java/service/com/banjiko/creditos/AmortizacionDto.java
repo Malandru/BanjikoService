@@ -50,4 +50,39 @@ public class AmortizacionDto
         System.out.println("Total: " + total);
         System.out.println("----------------------\n");
     }
+
+    public long getNoCuenta()
+    {
+        return noCuenta;
+    }
+
+    public int getNoAmortizacion()
+    {
+        return noAmortizacion;
+    }
+
+    public float getTasaInteres()
+    {
+        return tasaInteres;
+    }
+
+    public double getCapital()
+    {
+        return capital;
+    }
+
+    public double getInteres()
+    {
+        return interes;
+    }
+
+    public double getTotal()
+    {
+        return total;
+    }
+
+    public double getSaldo()
+    {
+        return saldo;
+    }
 }
