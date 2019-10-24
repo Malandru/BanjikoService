@@ -6,6 +6,8 @@ import com.banjiko.creditos.TablaResponseDocument.TablaResponse;
 
 public class BanjikoServiceImpl extends BanjikoServiceSkeleton
 {
+    private AmortizacionDao amortizacionDao;
+
     @Override
     public TablaResponseDocument banjikoOperation(TablaRequestDocument tablaRequest)
     {
@@ -17,10 +19,11 @@ public class BanjikoServiceImpl extends BanjikoServiceSkeleton
         int meses = credito.getPlazoMeses();
         float tasaInteres = credito.getInteres();
         double saldo = credito.getMonto();
+        long noCuenta = credito.getCuenta().getNoCuenta();
 
-        double capital = saldo / meses;;
-        double interes;
-        double total;
+        AmortizacionDto amortizacionDto = new AmortizacionDto(saldo, meses, tasaInteres);
+        amortizacionDto.setNoCuenta(noCuenta);
+        amortizacionDao.add(credito);
 
         System.out.println("Generando tabla de amortizacion");
         TablaResponseDocument responseDocument = TablaResponseDocument.Factory.newInstance();
@@ -29,28 +32,19 @@ public class BanjikoServiceImpl extends BanjikoServiceSkeleton
 
         for(int mes = 0; mes < meses; mes++)
         {
-            interes = saldo * tasaInteres;
-            total = capital + interes;
-            saldo -= capital;
-            //TODO: Guardar valores en la db
-            table.addNoAmortizacion(mes);
-            table.addCapital(capital);
-            table.addInteres(interes);
-            table.addTotal(total);
-            table.addSaldo(saldo);
+            amortizacionDto.updateAmortizacion();
+            amortizacionDto.putInto(table);
+            amortizacionDto.print();
 
-            print(capital, interes, total);
+            amortizacionDao.add(amortizacionDto);
         }
-        System.out.println("Respondiendo con la tabla generada");
 
+        System.out.println("Respondiendo con la tabla generada");
         return responseDocument;
     }
 
-    private void print(double capital, double interes, double total)
+    public void setAmortizacionDao(AmortizacionDao amortizacionDao)
     {
-        System.out.println("Capital: " + capital);
-        System.out.println("Interes: " + interes);
-        System.out.println("Total: " + total);
-        System.out.println("----------------------\n");
+        this.amortizacionDao = amortizacionDao;
     }
 }
