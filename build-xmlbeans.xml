@@ -3,7 +3,7 @@
     <property file="build-xmlbeans.properties"/>
     <property name="resources" value="src/main/resources"/>
     <property name="wsdl-uri" value="${resources}/${wsdl.name}.wsdl"/>
-    <property name="tomcat-deployment" value="${tomcat.home}\webapps"/>
+    <property name="tomcat-deployment" value="${tomcat.home}/webapps"/>
     <property name="axis2-deployment" value="${tomcat-deployment}\axis2\WEB-INF\services"/>
     <property name="build" value="./build"/>
     <property name="build.classes" value="${build}/classes"/>
@@ -18,7 +18,7 @@
     <property name="web.service.skeleton" value="${lib}/${wsdl.name}-skeleton-${web.service.version}.jar"/>
 
     <path id="axis2.class.path">
-        <fileset dir="${axis2.home}/lib" includes="*.jar"/>
+        <fileset dir="${tomcat-deployment}/axis2/WEB-INF/lib" includes="*.jar"/>
     </path>
 
 <!--    CLEANERS HERE       -->
